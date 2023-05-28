@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+
+  godocker:
+    container_name: godocker
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:8081"
+    deploy:
+      mode: replicated
+      replicas: 1
+    networks: 
+      - net
+
+networks: 
+  net:
+    external: true
